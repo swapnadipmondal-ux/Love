@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>For Upasana 💖</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+body{
+  margin:0;
+  height:100vh;
+  background:linear-gradient(#ffd6e8,#fff);
+  font-family:'Comic Sans MS',cursive;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  overflow:hidden;
+}
+.page{
+  display:none;
+  text-align:center;
+  padding:20px;
+}
+.page.active{display:block}
+img.main{
+  width:220px;
+  border-radius:20px;
+  animation:float 2s infinite ease-in-out;
+}
+@keyframes float{
+  0%{transform:translateY(0)}
+  50%{transform:translateY(-12px)}
+  100%{transform:translateY(0)}
+}
+h1,p{color:#ff2f7d}
+.buttons{
+  margin-top:20px;
+  position:relative;
+  height:90px;
+}
+button{
+  padding:12px 25px;
+  font-size:18px;
+  margin:10px;
+  border:none;
+  border-radius:30px;
+  cursor:pointer;
+  background:#ff5fa2;
+  color:#fff;
+  transition:all 0.6s ease;
+}
+button:hover{background:#ff2f7d}
+.no{position:absolute}
+.fade{opacity:0;pointer-events:none}
+.heart{
+  position:fixed;
+  bottom:-20px;
+  font-size:24px;
+  animation:rise 4s linear infinite;
+}
+@keyframes rise{
+  0%{transform:translateY(0);opacity:1}
+  100%{transform:translateY(-110vh);opacity:0}
+}
+
+/* FINAL OVERLAY */
+.overlay{
+  position:fixed;
+  inset:0;
+  background:linear-gradient(#fff,#ffe6f0);
+  display:none;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  text-align:center;
+  padding:20px;
+}
+.overlay.show{display:flex}
+
+.gallery img{
+  width:260px;
+  border-radius:20px;
+  margin-top:15px;
+  opacity:0;
+  transition:opacity 1.5s ease;
+}
+.gallery img.show{opacity:1}
+</style>
+</head>
+
+<body>
+
+<!-- PAGE 1 -->
+<div class="page active" id="p1">
+  <img src="images/IMG_7690.jpeg" class="main">
+  <p id="text"></p>
+  <h1 id="question"></h1>
+  <div class="buttons">
+    <button onclick="go(3)">🙈 No</button>
+    <button onclick="go(2)">💖 Yes</button>
+  </div>
+</div>
+
+<!-- PAGE 2 -->
+<div class="page" id="p2">
+  <h1>Yayyyyy 🥰</h1>
+  <h1>I love you Upasana 💖</h1>
+  <h1>My Sona… My Titli 🦋</h1>
+</div>
+
+<!-- PAGE 3 -->
+<div class="page" id="p3">
+  <h1>Think again Sona? 🥺</h1>
+  <div class="buttons">
+    <button onclick="go(4)">😅 Okay Yes</button>
+    <button class="no" onmouseover="move(this)">😈 No</button>
+  </div>
+</div>
+
+<!-- PAGE 4 -->
+<div class="page" id="p4">
+  <img src="images/IMG_7691.jpeg" class="main">
+  <h1>Are you sure Upasana? 😳</h1>
+  <div class="buttons">
+    <button onclick="yesTwist()">💕 Yes</button>
+    <button class="no" id="lastNo" onmouseover="lastMove()">❌ No</button>
+  </div>
+</div>
+
+<!-- FINAL MOMENT -->
+<div class="overlay" id="twist">
+  <h1>Wait… 😏</h1>
+  <p>I don’t just love you.</p>
+  <p><b>I choose you. Every day.</b></p>
+  <h1>Upasana 💖</h1>
+  <h1>My Sona… My Titli 🦋</h1>
+
+  <div class="gallery">
+    <img src="images/IMG_1.JPG">
+    <img src="images/IMG_2.JPG">
+    <img src="images/IMG_3.JPG">
+    <img src="images/IMG_4.JPG">
+  </div>
+</div>
+
+<script>
+let lines=[
+ "Hey Upasana… 🌸",
+ "My little Titli 🦋",
+ "I was thinking about you…",
+ "So I need to ask you something 🥺"
+];
+let i=0;
+let t=document.getElementById("text");
+let q=document.getElementById("question");
+
+function typeText(){
+ if(i<lines.length){
+  t.innerHTML+=lines[i]+"<br>";
+  i++;
+  setTimeout(typeText,900);
+ }else{
+  q.innerHTML="Do you love me? 😊";
+ }
+}
+typeText();
+
+function go(n){
+ document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
+ document.getElementById('p'+n).classList.add('active');
+}
+
+function move(btn){
+ btn.style.left=Math.random()*70+"%";
+ btn.style.top=Math.random()*40+"%";
+}
+
+let moved=false;
+function lastMove(){
+ let btn=document.getElementById("lastNo");
+ if(!moved){
+  btn.style.left="60%";
+  btn.style.top="10px";
+  moved=true;
+  setTimeout(()=>btn.classList.add("fade"),700);
+ }
+}
+
+function yesTwist(){
+ document.getElementById("twist").classList.add("show");
+ hearts();
+ showGallery();
+}
+
+function showGallery(){
+ let imgs=document.querySelectorAll(".gallery img");
+ imgs.forEach((img,i)=>{
+  setTimeout(()=>img.classList.add("show"), i*1500);
+ });
+}
+
+function hearts(){
+ setInterval(()=>{
+  let h=document.createElement("div");
+  h.className="heart";
+  h.innerHTML="❤️";
+  h.style.left=Math.random()*100+"%";
+  document.body.appendChild(h);
+  setTimeout(()=>h.remove(),4000);
+ },300);
+}
+</script>
+
+</body>
+</html>
