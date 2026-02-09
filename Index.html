@@ -22,22 +22,27 @@ body{
   padding:20px;
 }
 .page.active{display:block}
+
 img.main{
   width:220px;
   border-radius:20px;
   animation:float 2s infinite ease-in-out;
 }
+
 @keyframes float{
   0%{transform:translateY(0)}
   50%{transform:translateY(-12px)}
   100%{transform:translateY(0)}
 }
+
 h1,p{color:#ff2f7d}
+
 .buttons{
   margin-top:20px;
   position:relative;
   height:90px;
 }
+
 button{
   padding:12px 25px;
   font-size:18px;
@@ -50,14 +55,17 @@ button{
   transition:all 0.6s ease;
 }
 button:hover{background:#ff2f7d}
+
 .no{position:absolute}
 .fade{opacity:0;pointer-events:none}
+
 .heart{
   position:fixed;
   bottom:-20px;
   font-size:24px;
   animation:rise 4s linear infinite;
 }
+
 @keyframes rise{
   0%{transform:translateY(0);opacity:1}
   100%{transform:translateY(-110vh);opacity:0}
@@ -92,7 +100,7 @@ button:hover{background:#ff2f7d}
 
 <!-- PAGE 1 -->
 <div class="page active" id="p1">
-  <img src="images/IMG_7690.jpeg" class="main">
+  <img src="IMG_7690.JPG" class="main">
   <p id="text"></p>
   <h1 id="question"></h1>
   <div class="buttons">
@@ -119,7 +127,7 @@ button:hover{background:#ff2f7d}
 
 <!-- PAGE 4 -->
 <div class="page" id="p4">
-  <img src="images/IMG_7691.jpeg" class="main">
+  <img src="IMG_7691.JPG" class="main">
   <h1>Are you sure Upasana? 😳</h1>
   <div class="buttons">
     <button onclick="yesTwist()">💕 Yes</button>
@@ -136,10 +144,10 @@ button:hover{background:#ff2f7d}
   <h1>My Sona… My Titli 🦋</h1>
 
   <div class="gallery">
-    <img src="images/IMG_1.JPG">
-    <img src="images/IMG_2.JPG">
-    <img src="images/IMG_3.JPG">
-    <img src="images/IMG_4.JPG">
+    <img src="IMG_1.JPG">
+    <img src="IMG_2.JPG">
+    <img src="IMG_3.JPG">
+    <img src="4.JPG">
   </div>
 </div>
 
@@ -150,6 +158,7 @@ let lines=[
  "I was thinking about you…",
  "So I need to ask you something 🥺"
 ];
+
 let i=0;
 let t=document.getElementById("text");
 let q=document.getElementById("question");
@@ -213,3 +222,4 @@ function hearts(){
 
 </body>
 </html>
+
